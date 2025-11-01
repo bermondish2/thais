@@ -1,25 +1,18 @@
+// app/layout.js
+'use client';
+
 import './(styles)/globals.css';
+import SWRegister from './sw-register';
 
 export const metadata = {
   title: 'Thais — Nutrition Coach',
   description: 'Thais with an Apple-like, modern design.',
 };
 
-'use client';
-import SWRegister from './sw-register';
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="manifest" href="/manifest.webmanifest" />
-        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-      </head>
       <body>
-        {/* PWA service worker registration */}
-        <script></script>
-        
         <div className="container">
           <header className="header">
             <div className="brand">
@@ -30,13 +23,16 @@ export default function RootLayout({ children }) {
               </div>
             </div>
           </header>
+
           <nav className="nav">
             <a href="/">Search</a>
             <a href="/recipes">Recipe analysis</a>
             <a href="/scan">Scan barcode</a>
           </nav>
-                    <SWRegister />
+
+          <SWRegister />
           {children}
+
           <div className="footer">
             <p>For education only. Not medical advice. © {new Date().getFullYear()}</p>
           </div>
